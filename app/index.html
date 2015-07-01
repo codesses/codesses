@@ -19,7 +19,7 @@
     <!--[if lte IE 8]><link rel="stylesheet" href="styles/ie8.css" /><![endif]-->
     <!-- endbuild -->
   </head>
-  <body ng-app="codesses" class="landing">
+  <body ng-app="codessesApp" class="landing">
 
     <div id="page-wrapper">
 
@@ -32,9 +32,9 @@
                         <li>
                             <a href="#">About Us</a>
                             <ul>
-                                <li><a href="#">Mission and Objectives</a></li>
-                                <li><a href="#">Our Team</a></li>
-                                <li><a href="#">Our Partners</a></li>
+                                <li><a href="#one" class="scrolly">Mission and Objectives</a></li>
+                             <!--    <li><a href="#">Our Team</a></li>
+                                <li><a href="#">Our Partners</a></li> -->
                             </ul>
                         </li>
                         <li>
@@ -47,29 +47,27 @@
                 </nav>
             </header>
 
-        <!-- Banner -->
-        <div class="wrap">
-            <section id="banner">
-                <div class="content">
-                    <header>
-                        <h2>The Codesses <code>Hackathon</code></h2>
-                        <p>aims at encouraging female techprenuers to be more <br />
-                        involved in computer programming and to work in teams. <br>
-                        <br>
-                        <a class="button">Participate</a>  </p>
-                    </header>
-                    <span class="image"><img src="images/ic.jpg"  alt="" /></span>
-                </div>
-                <a href="#one" class="goto-next scrolly">Next</a>
-            </section>
-        </div>
+          <section data-ng-view>
+
+          </section>
 
         <!-- One -->
-            <section id="one" class="spotlight style1 bottom">
-                <!-- <a href="#banner" class="goto-prev scrolly">Prev</a> -->
-                <span class="image fit main"><img src="images/cd.jpg" alt="" /></span>
+            <section id="one" class="spotlight style1 bottom" >
+                <span class="image fit main"><img ng-src="images/cd.jpg" alt="" /> </span>
+                   <div class="content">
+                        <div class="container">
+                            <div class="row">
+                                <div class="12u center 12u$(medium)">
+                                    <header>
+                                        <h2>Our Mission &amp; Objectives</h2>
+                                        <p>To inspire and equip the next generation of leading female techprenuers from Africa.</p>
+                                    </header>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <a href="#two" class="goto-prev scrolly">Prev</a> -->
             </section>
-
 
             <footer id="footer">
                 <ul class="copyright">

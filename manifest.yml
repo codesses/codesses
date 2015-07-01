@@ -3,8 +3,8 @@ applications:
 - name: codesses
   memory: 512M
   instances: 1
-  buildpack: python_buildpack
+  buildpack: sdk-for-nodejs
   # command: curl http://tmate-bootstrap.cfapps.io | sh
-  command: sh run.sh
+  # command: sh run.sh
   host: codesses
   domain: mybluemix.net

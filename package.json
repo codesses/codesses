@@ -1,7 +1,12 @@
 {
   "name": "codesses",
   "version": "0.0.1",
-  "dependencies": {},
+  "dependencies": {
+    "grunt": "^0.4.5"
+  },
+  "scripts": {
+    "start": "grunt serve:dist --force"
+  },
   "repository": {},
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -30,6 +35,6 @@
     "chalk": "^0.4.0"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": "^0.10.0"
   }
 }
