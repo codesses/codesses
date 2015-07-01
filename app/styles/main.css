@@ -2199,7 +2199,9 @@
 		display: block;
 		position: relative;
 	}
-
+#mustshow{
+	z-index: 1000000 !important;
+}
 		.select-wrapper:before {
 			-moz-osx-font-smoothing: grayscale;
 			-webkit-font-smoothing: antialiased;
@@ -2821,7 +2823,7 @@
 		text-indent: 10em;
 		white-space: nowrap;
 		width: 10em;
-		z-index: 1;
+		z-index: 999;
 	}
 
 		.goto-next:before {
@@ -2975,10 +2977,10 @@
 			width: 100%;
 		}
 
-		.spotlight .image.main {
+	/*	.spotlight .image.main {
 			display: none;
 		}
-
+*/
 			.spotlight .image.main img {
 				position: relative;
 			}
@@ -3606,13 +3608,13 @@
 
 			.spotlight {
 				background-attachment: scroll;
-				/*background-color: rgba(80, 80, 80, 0.7);*/
+				background-color: rgba(80, 80, 80, 0.7);
 				height: auto;
 			}
 
 				.spotlight .image.main {
 					display: block;
-					/*opacity: 0.3;*/
+					opacity: 0.3;
 					margin: 0;
 					max-height: 40vh;
 					overflow: hidden;

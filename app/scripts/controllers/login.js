@@ -10,7 +10,7 @@ angular.module('codessesApp')
   .controller('LoginCtrl', function ($scope, Auth, $location, $q, Ref, $timeout) {
     $scope.oauthLogin = function(provider) {
       $scope.err = null;
-      Auth.$authWithOAuthPopup(provider, {rememberMe: true}).then(redirect, showError);
+      Auth.$authWithOAuthRedirect(provider, {rememberMe: true}).then(redirect, showError);
     };
 
     $scope.anonymousLogin = function() {
@@ -70,7 +70,7 @@ angular.module('codessesApp')
       return f + str.substr(1);
     }
 
-  
+
 
     function redirect() {
       $location.path('/account');

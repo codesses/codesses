@@ -55,7 +55,7 @@ angular.module('codessesApp')
 
   // configure views; whenAuthenticated adds a resolve method to ensure users authenticate
   // before trying to access that route
-  .config(['$routeProvider', function($routeProvider) {
+  .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -70,11 +70,20 @@ angular.module('codessesApp')
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
+      .when('/how', {
+        templateUrl: 'views/how.html',
+        controller: 'HowCtrl'
+      })
+      .when('/path', {
+        templateUrl: 'views/path.html',
+        controller: 'PathCtrl'
+      })
       .whenAuthenticated('/account', {
         templateUrl: 'views/account.html',
         controller: 'AccountCtrl'
       })
       .otherwise({redirectTo: '/'});
+      // $locationProvider.html5Mode(true);
   }])
 
   /**

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" ng-app="codessesApp" ng-cloak="">
   <head>
     <meta charset="utf-8">
     <title>The Codesses | Inspiring Female Techprenuers Everywhere</title>
@@ -10,6 +10,8 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog.css" />
+    <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog-theme-default.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -19,26 +21,26 @@
     <!--[if lte IE 8]><link rel="stylesheet" href="styles/ie8.css" /><![endif]-->
     <!-- endbuild -->
   </head>
-  <body ng-app="codessesApp" class="landing">
+  <body class="landing">
 
     <div id="page-wrapper">
 
         <!-- Header -->
-            <header id="header" ng-cloak="">
+            <header id="header" >
                 <h1 id="logo"><a href="">The Codesses</a> <code>Hackathon</code></h1>
                 <nav id="nav">
                     <ul>
-                        <li><a href="#">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li>
                             <a href="#">About Us</a>
                             <ul>
-                                <li><a href="#one" class="scrolly">Mission and Objectives</a></li>
+                                <li><a href="#/how" class="scrolly">Mission and Objectives</a></li>
                              <!--    <li><a href="#">Our Team</a></li>
                                 <li><a href="#">Our Partners</a></li> -->
                             </ul>
                         </li>
                         <li>
-                            <a href="#hacks" class="scrolly">The Hackathon</a>
+                            <a href="#/path" class="scrolly">The Hackathon</a>
                         </li>
                         <li><a href="mailto:hello@thecodesses.com">Contact Us</a></li>
                         <!-- <li><a ng-href="#/loginan">Chat</a></li> -->
@@ -50,24 +52,8 @@
           <section data-ng-view>
 
           </section>
+          <a href="#footer" class="goto-next scrolly">Next</a>
 
-        <!-- One -->
-            <section id="one" class="spotlight style1 bottom" >
-                <span class="image fit main"><img ng-src="images/cd.jpg" alt="" /> </span>
-                   <div class="content">
-                        <div class="container">
-                            <div class="row">
-                                <div class="12u center 12u$(medium)">
-                                    <header>
-                                        <h2>Our Mission &amp; Objectives</h2>
-                                        <p>To inspire and equip the next generation of leading female techprenuers from Africa.</p>
-                                    </header>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <a href="#two" class="goto-prev scrolly">Prev</a> -->
-            </section>
 
             <footer id="footer">
                 <ul class="copyright">
@@ -110,6 +96,8 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/ngDialog/js/ngDialog.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -126,6 +114,7 @@
     <script src="scripts/directives/ngShowAuth.js"></script>
     <script src="scripts/directives/ngHideAuth.js"></script>
     <script src="scripts/routes.js"></script>
+    <script src="scripts/controllers/how.js"></script>
     <!-- endbuild -->
 </body>
 </html>

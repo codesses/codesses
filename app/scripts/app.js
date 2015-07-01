@@ -8,7 +8,7 @@
 *
 * Main module of the application.
 */
-app = angular.module('codessesApp', [
+var app = angular.module('codessesApp', [
   'ngAnimate',
   'ngAria',
   'ngCookies',
