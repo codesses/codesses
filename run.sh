@@ -6,4 +6,6 @@ fi
 echo port is $SERVER_PORT
 
 
-grunt serve --force --port=$SERVER_PORT
+grunt serve:app --force --port=$SERVER_PORT
+
+# node node_modules/http-server/bin/http-server app -p $SERVER_PORT -o

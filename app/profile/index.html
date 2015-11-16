@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="app">
+<head>
+  <meta charset="utf-8" />
+  <title>The Codesses | Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="/styles/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/animate.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/font.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/app.css" type="text/css" />
+</head>
+<body ng-controller="AppCtrl">
+  <div class="app" id="app" ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}" ui-view></div>
+
+  <!-- jQuery -->
+  <script src="/scripts/jquery.min.js"></script>
+  <script src="/scripts/vendor/hashids.min.js"></script>
+  <script src="/scripts/vendor/libs/moment.min.js"></script>
+
+  <!-- Angular -->
+  <script src="/scripts/vendor/angular/angular.js"></script>
+
+  <script src="/scripts/vendor/angular/angular-animate/angular-animate.js"></script>
+  <script src="/scripts/vendor/angular/angular-cookies/angular-cookies.js"></script>
+  <script src="/scripts/vendor/angular/angular-resource/angular-resource.js"></script>
+  <script src="/scripts/vendor/angular/angular-sanitize/angular-sanitize.js"></script>
+  <script src="/scripts/vendor/angular/angular-touch/angular-touch.js"></script>
+<!-- Vendor -->
+  <script src="/scripts/vendor/angular/angular-ui-router/angular-ui-router.js"></script>
+  <script src="/scripts/vendor/angular/ngstorage/ngStorage.js"></script>
+
+  <!-- bootstrap -->
+  <script src="/scripts/vendor/angular/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <!-- lazyload -->
+  <script src="/scripts/vendor/angular/oclazyload/ocLazyLoad.js"></script>
+  <!-- translate -->
+  <script src="/scripts/vendor/angular/angular-translate/angular-translate.js"></script>
+  <script src="/scripts/vendor/angular/angular-translate/loader-static-files.js"></script>
+  <script src="/scripts/vendor/angular/angular-translate/storage-cookie.js"></script>
+  <script src="/scripts/vendor/angular/angular-translate/storage-local.js"></script>
+
+  <!-- App -->
+  <script src="/scripts/account/app.js"></script>
+  <script src="/scripts/account/config.js"></script>
+  <script src="/scripts/account/config.lazyload.js"></script>
+  <script src="/scripts/account/config.router.js"></script>
+  <script src="/scripts/account/main.js"></script>
+  <script src="/scripts/account/services/ui-load.js"></script>
+  <script src="/scripts/account/services/getuser.js"></script>
+  <script src="/scripts/account/filters/fromNow.js"></script>
+  <script src="/scripts/account/directives/setnganimate.js"></script>
+  <script src="/scripts/account/directives/ui-butterbar.js"></script>
+  <script src="/scripts/account/directives/ui-focus.js"></script>
+  <script src="/scripts/account/directives/ui-fullscreen.js"></script>
+  <script src="/scripts/account/directives/ui-jq.js"></script>
+  <script src="/scripts/account/directives/ui-module.js"></script>
+  <script src="/scripts/account/directives/ui-nav.js"></script>
+  <script src="/scripts/account/directives/ui-scroll.js"></script>
+  <script src="/scripts/account/directives/ui-shift.js"></script>
+  <script src="/scripts/account/directives/ui-toggleclass.js"></script>
+  <script src="/scripts/account/directives/ui-validate.js"></script>
+  <script src="/scripts/firebase/firebase.js"></script>
+  <script src="/scripts/firebase/angularfire.js"></script>
+  <script src="/scripts/angularfire/firebase.ref.js"></script>
+  <script src="/scripts/angularfire/auth.js"></script>
+  <script src="/scripts/angularfire/config.js"></script>
+  <script src="/scripts/account/controllers/bootstrap.js"></script>
+  <!-- Lazy loading -->
+</body>
+</html>

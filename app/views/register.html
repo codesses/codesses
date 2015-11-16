@@ -1,0 +1,124 @@
+<!-- Register -->
+        <div class="wrap">
+            <section id="banner">
+                <div class="content">
+                  <center data-ng-hide="complete">
+                    <h2>Hello, <code>{{user.nick}}</code></h2>
+                    <br>
+                    <p class="error" ng-show="err">{{err}}</p>
+                    <p class="good" ng-show="msg">{{msg}}</p>
+
+                    <div ng-repeat="message in messages" class="alert alert-{{message.type}}">{{message.text}}</div>
+                    <div data-ng-hide="mentor">
+                        <div class="row uniform 50%">
+                            <div class="6u 12u$(xsmall)">
+                                <input type="text" name="name" id="name" data-ng-model="user.name" placeholder="Name" ng-required/>
+                            </div>
+                            <div class="6u$ 12u$(xsmall)">
+                                <input type="email" name="email" id="email" ng-keypress="clear()" data-ng-model="user.email" placeholder="Email" autofocus ng-required/>
+                            </div>
+                            <div class="12u$">
+                                <div class="select-wrapper">
+                                    <select name="category" id="category" data-ng-model="user.experience" ng-required>
+                                        <option value="" disabled selected>- Experience Level -</option>
+                                        <option value="1">I have never Programmed before</option>
+                                        <option value="2">I just started programming</option>
+                                        <option value="3">I have being programming for awhile</option>
+                                        <option value="4">I am a Rockstar</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="6u 12u$(medium)">
+                                <input type="radio" data-ng-model="user.gender" value="female" id="priority-high" name="priority">
+                                <label for="priority-high">Female</label>
+                            </div>
+                            <div class="6u$ 12u$(medium)">
+                                <input type="radio" data-ng-model="user.gender" value="male"   id="priority-normal" name="priority">
+                                <label for="priority-normal">Male</label>
+                            </div>
+                            <div class="12u$">
+                                <textarea ng-model="user.address" name="address" id="message" rows="5" placeholder="Enter your Address" rows="6"></textarea>
+                            </div>
+                            <div class="6u 12u$(medium)">
+                                <input type="checkbox" data-ng-model="user.subscribe" id="copy" name="copy" ng-required>
+                                <label for="copy">Email me notifications about events.</label>
+                            </div>
+                            <div class="6u$ 12u$(medium)">
+                                <input type="checkbox" data-ng-model="isValid" id="human" name="human" ng-required>
+                                <label for="human">I am a human and not a robot.</label>
+                            </div>
+                            <div class="12u$">
+                                <ul class="actions">
+                                    <li><input type="submit" value="Register" data-ng-click="createProfile()" class="special" /></li>
+                                </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div data-ng-show="mentor">
+                            <div class="row uniform 50%">
+                                <div class="6u 12u$(xsmall)">
+                                    <input type="text" name="name" id="name" data-ng-model="user.name" placeholder="Name" ng-required/>
+                                </div>
+                                <div class="6u$ 12u$(xsmall)">
+                                    <input type="email" name="email" id="email" data-ng-model="user.email" placeholder="Email" autofocus ng-required/>
+                                </div>
+                                <div class="12u$">
+                                    <input type="text" name="company" id="company"  data-ng-model="user.company" placeholder="Where do you work..." autofocus ng-required/>
+                                </div>
+                                <div class="12u$">
+                                    <input type="text" name="blog" id="blog" data-ng-model="user.blog" placeholder="Your blog or website..." autofocus ng-required/>
+                                </div>
+                                <div class="6u 12u$(medium)">
+                                    <input type="radio" data-ng-model="user.gender" value="female"  id="priority-high" name="priority">
+                                    <label for="priority-high">Female</label>
+                                </div>
+                                <div class="6u$ 12u$(medium)">
+                                    <input type="radio" data-ng-model="user.gender" value="male"   id="priority-normal" name="priority">
+                                    <label for="priority-normal">Male</label>
+                                </div>
+                                <div class="12u$">
+                                    <textarea ng-model="user.bio" name="bio" id="bio" rows="5" placeholder="Your bio..." rows="6" required></textarea>
+                                </div>
+                                <div class="12u$ 12u$(large)">
+                                    <input type="checkbox" data-ng-model="isValid" id="human" name="human" ng-required>
+                                    <label for="human">I am a human and not a robot.</label>
+                                </div>
+                                <div class="12u$">
+                                    <ul class="actions">
+                                        <li><input type="submit" value="Register" data-ng-click="createProfile()" class="special" data-ng-disabled="(user.gender !== 'female') || (isValid !== true)"/></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                      </center>
+
+                      <div data-ng-show="complete">
+                          <div data-ng-show="mentor">
+                             <header>
+                                <h2>Hello, <code>{{user.name}}</code></h2>
+                                  <p>Thank you for volunteering to be a <code>Mentor!</code><br> If you have not already, you will recieve a mail <br> shortly describing your roles as well as the <code>codesses</code> assigned to you. Meanwhile, <br> click below to review the <code>Hackathon Path.</code>
+                                  <br>
+                                  <br>
+                                  <a href="/path" class="button">Hackathon Path</a>
+                                  </p>
+                              </header>
+                              <span class="image" id="picture"><img src="{{user.picture}}" /></span>
+                          </div>
+
+                          <div data-ng-hide="mentor">
+                             <header>
+                                <h2>Hello, <code>{{user.name}}</code></h2>
+                                  <p>Thank you for signing up! You will recieve a mail <br> shortly containing our <code>Starter Pack</code>. Meanwhile, <br> click below to review the <code>Hackathon Path.</code>
+                                  <br>
+                                  <br>
+                                  <a href="/path" class="button">Hackathon Path</a>
+                                  </p>
+                              </header>
+                              <span class="image" id="picture"><img src="{{user.picture}}" /></span>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </section>
+        </div>

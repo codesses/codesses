@@ -163,7 +163,7 @@
 		this.moveTo = function( x, y, options ) {
 			var settings = $.extend( {}, defaults, options ),
 				steps = path.length ? STEP_SIZE : 1;
-				i = 0;
+				var i = 0;
 
 			for( ; i < steps; i++ ) {
 				path.push({ x: x,

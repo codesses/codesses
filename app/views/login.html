@@ -1,37 +1,30 @@
+<!-- Login -->
+        <div class="wrap">
+            <section id="banner">
+                <div class="content">
+                  <center>
+                    <div data-ng-hide="usertype">
+                      <h2 class="special"><code>Register/Login</code></h2>
+                      <br>
+                      <button  ng-click="oauthLogin('facebook')" class="button facebook">Facebook</button>
+                      <br>
+                      <br>
+                      <button  ng-click="oauthLogin('google')" class="button google">Google+</button>
+                      <br>
+                      <br>
+                      <button  ng-click="oauthLogin('twitter')" class="button twitter">Twitter</button>
+                    </div>
 
-<h2>Login Page</h2>
-
-<fieldset>
-  <legend>Oauth</legend>
-  <p>
-    <button  ng-click="oauthLogin('facebook')">Facebook</button>
-    <button  ng-click="oauthLogin('google')">Google</button>
-    <button  ng-click="oauthLogin('twitter')">Twitter</button>
-    <button  ng-click="oauthLogin('github')">GitHub</button>
-  </p>
-</fieldset>
-
-<form role="form">
-  <p class="form-group">
-    <label for="loginEmail">email</label>
-    <input id="loginEmail" required name="email" type="email" ng-model="email" />
-  </p>
-  <p class="form-group">
-    <label for="loginPass">password</label>
-    <input id="loginPass" required name="pass" type="password" ng-model="pass" />
-  </p>
-  <p class="form-group" ng-cloak ng-show="createMode">
-    <label for="loginConfirm">confirm pass</label>
-    <input id="loginConfirm" required name="confirm" type="password" ng-model="confirm" />
-  </p>
-
-  <p>
-    <button  ng-click="passwordLogin(email, pass)" ng-hide="createMode">Log In</button>
-    <button  ng-click="createMode = true" ng-hide="createMode">Register</button>
-    <button  ng-cloak ng-show="createMode"
-            ng-click="createAccount(email, pass, confirm)">Create Account</button>
-    <button  ng-cloak ng-show="createMode" ng-click="createMode = false">Cancel</button>
-  </p>
-</form>
-<p ng-show="err" class="error">{{err}}</p>
-
+                    <div data-ng-show="usertype">
+                      <h2 class="special"><code>Register/Login</code></h2>
+                      <br>
+                      <button  ng-click="oauthLogin('github')" class="button github">Github</button>
+                      <br>
+                      <br>
+                      <span><a href="#/mentors">Mentors</a> can only signup using their <code>Github</code> user account.</span>
+                    </div>
+                    <p class="error">{{err}}</p>
+                  </center>
+                </div>
+            </section>
+        </div>

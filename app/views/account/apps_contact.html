@@ -1,0 +1,119 @@
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs hbox-auto-sm bg-light " ng-controller="ContactCtrl">
+
+  <!-- column -->
+  <div class="col w b-r">
+    <div class="vbox">
+      <div class="row-row">
+        <div class="cell scrollable hover">
+          <div class="cell-inner">
+            <div class="list-group no-radius no-border no-bg m-b-none">
+              <a class="list-group-item b-b" ng-class="{'focus': (filter == '')}" ng-click="selectGroup({name:''})">All Contacts</a>
+              <a ng-repeat="item in groups" ng-dblclick="editItem(item)" class="list-group-item m-l hover-anchor b-a no-select" ng-class="{'focus m-l-none': item.selected}" ng-click="selectGroup(item)">
+                <span ng-click='deleteGroup(item)' class="pull-right text-muted hover-action"><i class="fa fa-times"></i></span>
+                <span class="block m-l-n" ng-class="{'m-n': item.selected }">{{ item.name ? item.name : 'Untitled' }}</span>
+                <input type="text" class="form-control pos-abt" ng-show="item.editing" ng-blur="doneEditing(item)" ng-model="item.name" style="top:3px;left:2px;width:98%" ui-focus="item.editing">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper b-t" data-ng-hide="true">
+        <span tooltip="Double click to Edit" class="pull-right text-muted inline wrapper-xs m-r-sm"><i class="fa fa-question"></i></span>
+        <a href class="btn btn-sm btn-default" ng-click="createGroup()"><i class="fa fa-plus fa-fw m-r-xs"></i> New Group</a>
+      </div>
+    </div>
+  </div>
+  <!-- /column -->
+  <!-- column -->
+  <div class="col w-lg lter b-r">
+    <div class="vbox">
+      <div class="wrapper-xs b-b">
+        <div class="input-group m-b-xxs">
+          <span class="input-group-addon input-sm no-border no-bg"><i class="icon-magnifier text-md m-t-xxs"></i></span>
+          <input type="text" class="form-control input-sm no-border no-bg text-md" placeholder="Search {{group.name ? group.name : 'All Contacts'}}" ng-model="query">
+        </div>
+      </div>
+      <div class="row-row">
+        <div class="cell scrollable hover">
+          <div class="cell-inner">
+            <div class="m-t-n-xxs">
+              <div class="list-group list-group-lg no-radius no-border no-bg m-b-none">
+                <a ng-repeat="item in items | filter:{group:filter} | filter:query | orderBy:'first'" class="list-group-item m-l" ng-class="{'select m-l-none': item.selected }" ng-click="selectItem(item)">
+                  <span class="block text-ellipsis m-l-n text-md" ng-class="{'m-l-none': item.selected }">
+                    <strong>{{ item.name }}</strong>
+                    <span ng-hide="item.name">No Name</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div class="text-center pos-abt w-full" style="top:50%;" ng-hide="(items | filter:{group:filter} | filter:query).length">No Contacts</div>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper b-t text-center" data-ng-hide="true">
+        <a href class="btn btn-sm btn-default btn-addon" ng-click="createItem()"><i class="fa fa-plus fa-fw m-r-xs"></i> New Contact</a>
+      </div>
+    </div>
+  </div>
+  <!-- /column -->
+
+<!--
+          <a class="btn btn-xs btn-default pull-right" ng-hide="!item" ng-click="deleteItem(item)"><i class="fa fa-times"></i></a>
+          <a class="btn btn-xs btn-default" ng-hide="item.editing" ng-click="editItem(item)">Edit</a>
+          <a class="btn btn-xs btn-default" ng-show="item.editing" ng-click="doneEditing(item)">Done</a> -->
+
+  <!-- column -->
+  <div class="col bg-white-only">
+    <div class="vbox">
+      <div class="wrapper-sm b-b">
+        <div class="m-t-n-xxs m-b-n-xxs m-l-xs">
+          <form class="m-b-none " data-ng-submit="sendChat()">
+            <div class="input-group" data-ng-show="item.selected">
+              <input type="text" autofocus class="form-control input-xg" data-ng-model="text" data-ng-keypress="typingChat()" placeholder="Say something">
+              <span class="input-group-btn">
+                <input type="submit" class="btn btn-default btn-xg" data-ng-disabled="!text" value="SEND">
+              </span>
+
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+      <div class="row-row">
+        <div class="cell">
+          <div class="cell-inner">
+            <div class="panel-body" data-ng-repeat=" message in messages | orderBy:'-timestamp'">
+              <div class="m-b" data-ng-if="message.sender === item.username" >
+                <span class="thumb-sm avatar pull-left">
+                  <a href class="pull-left "><img src="{{item.picture}}" alt="..."></a>
+                  <i class=" md b-white bottom" data-ng-class="item.status"></i>
+                </span>
+                <div class="m-l-xxl">
+                  <div class="pos-rlt wrapper b b-light r r-2x">
+                    <span class="arrow left pull-up"></span>
+                    <p class="m-b-none">{{message.text}}</p>
+                  </div>
+                  <small class="text-muted"><i class="fa fa-ok text-success"></i> {{message.timestamp | fromNow}}</small>
+                </div>
+              </div>
+              <div class="m-b" data-ng-if="message.sender === user.username">
+                <a href class="pull-right thumb-sm avatar"><img src="{{user.picture}}" class="images-circle" alt="..."></a>
+                <div class="m-r-xxl">
+                  <div class="pos-rlt wrapper bg-primary r r-2x">
+                    <span class="arrow right pull-up arrow-primary"></span>
+                    <p class="m-b-none">{{message.text}}</p>
+                  </div>
+                  <small class="text-muted">{{message.timestamp | fromNow}}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /column -->
+</div>
+<!-- /hbox layout -->

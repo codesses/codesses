@@ -2,14 +2,16 @@
         <div class="wrap">
             <section id="banner">
                 <div class="content">
-                    <header>
+                  <div>
+                     <header>
                         <h2>The Codesses <code>Hackathon</code></h2>
-                        <p>aims at encouraging female techprenuers to be more <br />
-                        involved in computer programming and to work in teams. <br>
-                        <br>
-                        <a href="#/login" class="button">Participate</a>  </p>
-                    </header>
-                    <span class="image"><img src="images/ic.jpg" /></span>
+                          <p>...aims at encouraging female techprenuers to be more <br />
+                          involved in computer programming and to work in teams. <br>
+                          <br>
+                          <center><button data-ng-hide="loggedIn" ng-click="mentee()" class="button">Participate</button> <a data-ng-show="loggedIn" href="/profile" class="button normal">Goto Dashboard</a> </center>  </p>
+                      </header><!--
+                      <span class="image"><img src="images/ic.jpg" /></span> -->
+                  </div>
                 </div>
             </section>
         </div>

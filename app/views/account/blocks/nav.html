@@ -1,0 +1,55 @@
+<!-- list -->
+<ul class="nav">
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span translate="aside.nav.HEADER">Menu</span>
+  </li>
+  <li ui-sref-active="active" class="active">
+    <a ui-sref="app.dashboard-v1">
+      <i class="fa fa-dashboard icon"></i>
+      <span class="font-bold" translate="aside.nav.DASHBOARD">Dashboard</span>
+    </a>
+  </li>  <li ui-sref-active="active">
+    <a ui-sref="app.calendar">
+      <i class="glyphicon glyphicon-calendar icon"></i>
+      <span class="font-bold" translate="aside.nav.CALENDAR">Calendar</span>
+    </a>
+  </li>
+<!--
+  <li ui-sref-active="active">
+    <a ui-sref="app.mail.list">
+      <b class="badge bg-info pull-right">0</b>
+      <i class="glyphicon glyphicon-envelope icon"></i>
+      <span class="font-bold" translate="aside.nav.EMAIL">Email</span>
+    </a>
+  </li> -->
+
+  <li ui-sref-active="active" data-ng-hide="true">
+    <a ui-sref="apps.note">
+      <i class="fa fa-mortar-board icon"></i>
+      <span class="font-bold" translate="aside.nav.LEARNHUB">LearnHub</span>
+    </a>
+  </li>
+  <li ui-sref-active="active">
+    <a ui-sref="apps.contact">
+      <b class="badge bg-info pull-right">0</b>
+      <i class="fa fa-wechat icon"></i>
+      <span class="font-bold" translate="aside.nav.CHATS">Chats</span>
+    </a>
+  </li>
+  <li class="line dk"></li>
+<!--
+  <li>
+    <a ui-sref="app.page.profile">
+      <i class="icon-user icon"></i>
+      <span translate="aside.nav.your_stuff.PROFILE">Profile</span>
+    </a>
+  </li>
+ -->
+  <li>
+    <a data-ng-click="logout()">
+      <i class="icon-logout icon"></i>
+      <span translate="aside.nav.your_stuff.LOGOUT">Logout</span>
+    </a>
+  </li>
+</ul>
+<!-- / list -->

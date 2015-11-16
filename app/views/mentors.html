@@ -1,0 +1,25 @@
+            <br>
+            <!-- Four -->
+                <section id="four" class="wrapper style1 special fade-up">
+                    <div class="container">
+                        <header class="major">
+                            <h2>The Mentors</h2>
+                            <p>Together, our mentors have more 20 years cummulative experience in software development.</p>
+                        </header>
+                        <div class="box alt">
+                            <div class="row uniform">
+                                <section data-ng-repeat="(mentor, key) in mentors" class="4u 6u(medium) 12u$(xsmall)">
+                                    <span class="image alt major"><img ng-src="{{mentor.picture}}" /></span>
+                                    <h3>{{mentor.name}}</h3>
+                                    <p>{{mentor.bio}}</p>
+                                    <p data-ng-show="mentor"><strong>Site:</strong>{{mentor.blog}}</p>
+                                </section>
+                            </div>
+                        </div>
+                      <!--   <footer class="major">
+                            <ul class="actions">
+                                <li><a href="#" class="button">Magna sed feugiat</a></li>
+                            </ul>
+                        </footer>
+ -->                    </div>
+                </section>

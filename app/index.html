@@ -15,36 +15,50 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <!--[if lte IE 8]><script src="scripts/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="styles/timeline.css" />
     <link rel="stylesheet" href="styles/main.css" />
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/ie.css -->
+    <!--[if lte IE 8]><script src="scripts/ie/html5shiv.js"></script><![endif]-->
     <!--[if lte IE 9]><link rel="stylesheet" href="styles/ie9.css" /><![endif]-->
     <!--[if lte IE 8]><link rel="stylesheet" href="styles/ie8.css" /><![endif]-->
     <!-- endbuild -->
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-64678321-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
   </head>
-  <body class="landing">
+  <body class="landing" data-ng-controller="AppCtrl">
 
     <div id="page-wrapper">
 
         <!-- Header -->
             <header id="header" >
-                <h1 id="logo"><a href="">The Codesses</a> <code>Hackathon</code></h1>
+                <h1 id="logo"><a href="#/">The Codesses</a> <code>Hackathon</code></h1>
                 <nav id="nav">
                     <ul>
-                        <li><a href="/">Home</a></li>
+                        <li><a href="#/">Home</a></li>
                         <li>
-                            <a href="#">About Us</a>
+                            <a href="">About Us</a>
                             <ul>
                                 <li><a href="#/how" class="scrolly">Mission and Objectives</a></li>
-                             <!--    <li><a href="#">Our Team</a></li>
-                                <li><a href="#">Our Partners</a></li> -->
+                                <li><a href="#/mentors">The Mentors</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="#/path" class="scrolly">The Hackathon</a>
                         </li>
                         <li><a href="mailto:hello@thecodesses.com">Contact Us</a></li>
-                        <!-- <li><a ng-href="#/loginan">Chat</a></li> -->
-                        <li><a href="https://docs.google.com/forms/d/1J4XDwZRcG4tND6XrHoKOWHKZ_y2mmC6dsdYdOmlQF6k/viewform?c=0&w=1" class="button special" target="_blank">Volunteer</a></li>
+                        <li data-ng-hide="loggedIn"><button ng-click="mentor()" class="button special">Join as a Mentor</button></li><!--
+                        <li data-ng-hide="loggedIn"><a href="https://docs.google.com/forms/d/1J4XDwZRcG4tND6XrHoKOWHKZ_y2mmC6dsdYdOmlQF6k/viewform?c=0&w=1" class="button special" target="_blank">Volunteer</a></li> -->
+                        <li data-ng-show="loggedIn"  id="dashboard" class="hide"><a href="/profile" class="button normal">Dashboard</a></li>
                     </ul>
                 </nav>
             </header>
@@ -52,37 +66,36 @@
           <section data-ng-view>
 
           </section>
-          <a href="#footer" class="goto-next scrolly">Next</a>
-
-
-            <footer id="footer">
-                <ul class="copyright">
-                    <li>&copy; 2015. All rights reserved.</li><li><a href="#">The Codesses</a></li>
-                </ul>
-            </footer>
+        <footer id="footer">
+            <ul class="icons">
+                <li><a href="https://twitter.com/thecodesses" class="icon alt fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
+                <li><a href="https://www.facebook.com/groups/467091790135256" target="_blank" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+                <li><a href="https://github.com/codesses" class="icon alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+            </ul>
+            <ul class="copyright">
+                <li>&copy; 2015. All rights reserved.</li><li>Built with <span style="color:pink;">&#x2665;</span> in <a href="#">Lagos, Nigeria</a>.</li>
+            </ul>
+        </footer>
 
     </div>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-       ga('create', 'UA-64678321-1');
-       ga('send', 'pageview');
-    </script>
+    <!--[if lte IE 8]><script src="scripts/ie/respond.min.js"></script><![endif]-->
 
-    <!-- build:js(.) scripts/vendor.js -->
+
+    <!-- build:js({.tmp,app}) scripts/main.js -->
     <script src="scripts/jquery.min.js"></script>
     <script src="scripts/jquery.scrolly.min.js"></script>
     <script src="scripts/jquery.dropotron.min.js"></script>
+    <script src="scripts/prefixfree.min.js"></script>
     <script src="scripts/jquery.scrollex.min.js"></script>
     <script src="scripts/skel.min.js"></script>
     <script src="scripts/util.js"></script>
-    <!--[if lte IE 8]><script src="scripts/ie/respond.min.js"></script><![endif]-->
+    <script src="scripts/timeline.js"></script>
     <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/firebase/firebase.js"></script>
@@ -98,23 +111,32 @@
     <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="bower_components/ngDialog/js/ngDialog.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <!-- build:js({.tmp,app}) scripts/script.js -->
     <script src="scripts/app.js"></script>
+    <script src="scripts/services/getuser.js"></script>
+    <script src="scripts/services/saveuser.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/angularfire/config.js"></script>
     <script src="scripts/angularfire/firebase.ref.js"></script>
-    <script src="scripts/controllers/chat.js"></script>
     <script src="scripts/filters/reverse.js"></script>
     <script src="scripts/angularfire/auth.js"></script>
     <script src="scripts/controllers/login.js"></script>
-    <script src="scripts/controllers/account.js"></script>
     <script src="scripts/directives/ngShowAuth.js"></script>
     <script src="scripts/directives/ngHideAuth.js"></script>
     <script src="scripts/routes.js"></script>
     <script src="scripts/controllers/how.js"></script>
+    <script src="scripts/controllers/path.js"></script>
+    <script src="scripts/controllers/register.js"></script>
+    <script src="scripts/controllers/mentors.js"></script>
     <!-- endbuild -->
+    <script type="text/javascript">
+    $(document).ready(function($) {
+        $("#dashboard").removeClass('hide');
+    });
+    </script>
 </body>
 </html>

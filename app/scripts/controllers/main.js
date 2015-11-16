@@ -8,10 +8,14 @@
  * Controller of the codessesApp
  */
 angular.module('codessesApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('MainCtrl',['$scope', '$localStorage', 'saveUser', 'Auth', function ($scope, $localStorage , saveUser, Auth) {
+
+    var user = Auth.$getAuth();
+    // console.log(user);
+    if (user) {
+      $scope.loggedIn = true;
+    } else {
+      $scope.loggedIn = false;
+    };
+
+  }]);

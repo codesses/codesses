@@ -1,0 +1,138 @@
+<div class="hbox hbox-auto-xs bg-light " ng-controller="NoteCtrl">
+  <!-- column -->
+  <div class="col w-lg lt b-r">
+    <div class="vbox">
+      <div class="wrapper">
+        <a href class="pull-right btn btn-sm btn-primary m-t-n-xs" ng-click="createNote()">Invite</a>
+        <div class="h4">Pairing Session</div>
+      </div>
+      <div class="wrapper b-t m-t-xxs">
+        <div class="input-group">
+          <span class="input-group-addon input-sm"><i class="fa fa-search"></i></span>
+          <input type="text" class="form-control input-sm" placeholder="search" ng-model="query">
+        </div>
+      </div>
+      <div class="row-row">
+        <div class="cell scrollable hover">
+          <div class="cell-inner">
+            <div class="padder">
+              <div class="list-group">
+                <a ng-repeat="note in notes | filter:query | orderBy:'date':true" class="list-group-item b-l-{{note.color}} b-l-3x hover-anchor" ng-class="{'hover': note.selected }" ng-click="selectNote(note)">
+                  <span ng-click='deleteNote(note)' class="pull-right text-muted hover-action"><i class="fa fa-times"></i></span>
+                  <span class="block text-ellipsis">{{ note.content ? note.content : 'Empty note' }}</span>
+                  <small class="text-muted">{{ note.date | fromNow }}</small>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /column -->
+
+  <!-- column -->
+  <div class="col">
+    <div class="vbox">
+      <div class="wrapper bg-light lt b-b">
+        <a href class="pull-right btn btn-sm btn-info m-t-n-xs" ng-click="createNote()">New Note</a>
+        <span class="text-muted">Created on:</span> <span>{{ note.date  | date:'MMM-dd-yyyy H:mm' }}</span>
+        <div class="m-l inline dropdown" dropdown>
+          <a class="v-middle pos-rlt inline bg-{{note.color}}" dropdown-toggle style="width:16px;height:16px;top:-2px"></a>
+          <div class="dropdown-menu animated fadeInUp w wrapper">
+            <a ng-repeat="color in colors" class="inline m-xs bg-{{color}}" style="width:18px;height:18px" ng-click=" note.color = color "></a>
+          </div>
+        </div>
+      </div>
+      <div class="row-row">
+        <div class="cell">
+          <div class="cell-inner">
+            <textarea id="editor" name="editor" class="form-control no-radius no-border no-bg wrapper-lg text-md" style="height:100%;" ng-model="note.content" autofocus>
+            </textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /column -->
+  <!-- right col -->
+  <div class="col w-lg bg-white-only b-l bg-auto no-border-xs">
+    <tabset class="nav-tabs-alt" justified="true">
+      <tab>
+        <tab-heading>
+          <i class="glyphicon glyphicon-comment text-md text-muted wrapper-sm"></i>
+        </tab-heading>
+        <header class="panel-footer chat">
+          <!-- chat form -->
+          <div>
+            <form class="m-b-none ">
+              <div class="input-group">
+                <input type="text" class="form-control input-xg" placeholder="Type message...">
+                <span class="input-group-btn">
+                  <button class="btn btn-default btn-xg" type="button"><i class="white icon-arrow-right"></i></button>
+                </span>
+              </div>
+            </form>
+          </div>
+        </header>
+        <div class="panel-default">
+          <hr>
+          <!-- chat -->
+          <div class="wrapper-md cell scrollable hover">
+            <div class="panel-body" id="chat">
+              <div class="m-b">
+                <a href class="pull-left thumb-sm avatar"><img src="/images/a2.jpg" alt="..."></a>
+                <div class="m-l-xxl">
+                  <div class="pos-rlt wrapper b b-light r r-2x">
+                    <span class="arrow left pull-up"></span>
+                    <p class="m-b-none">Hi John, What's up...</p>
+                  </div>
+                  <small class="text-muted"><i class="fa fa-ok text-success"></i> 2 minutes ago</small>
+                </div>
+              </div>
+              <div class="m-b">
+                <a href class="pull-right thumb-sm avatar"><img src="/images/a3.jpg" class="images-circle" alt="..."></a>
+                <div class="m-r-xxl">
+                  <div class="pos-rlt wrapper bg-primary r r-2x">
+                    <span class="arrow right pull-up arrow-primary"></span>
+                    <p class="m-b-none">Lorem ipsum dolor sit amet, conse <br>adipiscing eli...<br>:)</p>
+                  </div>
+                  <small class="text-muted">1 minutes ago</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- /chat -->
+        </div>
+      </tab>
+      <tab>
+        <tab-heading>
+          <i class="glyphicon glyphicon-facetime-video text-md text-muted wrapper-sm"></i>
+        </tab-heading>
+        <div class="wrapper-md">
+          <div class="m-b-sm text-md">Video Chat</div>
+          <ul class="list-group no-borders pull-in auto hide">
+            <li class="list-group-item">
+              <span class="pull-left thumb-sm m-r"><img src="/images/a1.jpg" alt="..." class="images-circle"></span>
+              <a href class="text-muted" ui-toggle-class="show" target=".app-aside-right"><i class="fa fa-comment-o pull-right m-t-sm text-sm"></i></a>
+              <div class="clear">
+                <div><a href="">Chris Fox</a></div>
+                <small class="text-muted">about 2 minutes ago</small>
+              </div>
+            </li>
+          </ul>
+          <div class="text-center">
+            <a href class="btn btn-sm btn-primary padder-md m-b" data-ng-disabled="true">Start Video Call</a>
+            <br>
+            <span>Not implemented,yet.</span>
+          </div>
+        </div>
+      </tab>
+    </tabset>
+  </div>
+
+
+  <!-- / right col -->
+</div>
+<!-- /hbox layout

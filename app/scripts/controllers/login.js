@@ -7,78 +7,36 @@
  * Manages authentication to any active providers.
  */
 angular.module('codessesApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location, $q, Ref, $timeout) {
+  .controller('LoginCtrl', ['$scope', '$localStorage', '$firebaseObject', 'Auth', '$location', '$q', 'Ref', function ($scope, $localStorage, $firebaseObject, Auth, $location, $q, Ref, $timeout, ngDialog) {
+
+    var user = Auth.$getAuth();
+    if (user) {
+      location.href = '/profile';
+    }
+
+    $scope.remember = true;
+    $scope.usertype = $localStorage.usertype;
+
     $scope.oauthLogin = function(provider) {
       $scope.err = null;
-      Auth.$authWithOAuthRedirect(provider, {rememberMe: true}).then(redirect, showError);
+      Auth.$authWithOAuthPopup(provider, {rememberMe: $scope.remember}).then(redirect, showError);
     };
 
-    $scope.anonymousLogin = function() {
-      $scope.err = null;
-      Auth.$authAnonymously({rememberMe: true}).then(redirect, showError);
+    var redirect = function(user){
+      $scope.profile = $firebaseObject(Ref.child('profile/' + user.uid));
+      $scope.profile.$loaded().then(function() {
+        if ($scope.profile.isValid) {
+          window.location.href = '/profile';
+          return 0;
+        }
+        $location.path('/complete');
+      }, function () {
+        $location.path('/login');
+      });
     };
 
-    $scope.passwordLogin = function(email, pass) {
-      $scope.err = null;
-      Auth.$authWithPassword({email: email, password: pass}, {rememberMe: true}).then(
-        redirect, showError
-      );
+    var showError = function(err){
+        console.log(err);
+        $scope.err = 'Something bad happened, please try again.';
     };
-
-    $scope.createAccount = function(email, pass, confirm) {
-      $scope.err = null;
-      if( !pass ) {
-        $scope.err = 'Please enter a password';
-      }
-      else if( pass !== confirm ) {
-        $scope.err = 'Passwords do not match';
-      }
-      else {
-        Auth.$createUser({email: email, password: pass})
-          .then(function () {
-            // authenticate so we have permission to write to Firebase
-            return Auth.$authWithPassword({email: email, password: pass}, {rememberMe: true});
-          })
-          .then(createProfile)
-          .then(redirect, showError);
-      }
-
-      function createProfile(user) {
-        var ref = Ref.child('users', user.uid), def = $q.defer();
-        ref.set({email: email, name: firstPartOfEmail(email)}, function(err) {
-          $timeout(function() {
-            if( err ) {
-              def.reject(err);
-            }
-            else {
-              def.resolve(ref);
-            }
-          });
-        });
-        return def.promise;
-      }
-    };
-
-    function firstPartOfEmail(email) {
-      return ucfirst(email.substr(0, email.indexOf('@'))||'');
-    }
-
-    function ucfirst (str) {
-      // inspired by: http://kevin.vanzonneveld.net
-      str += '';
-      var f = str.charAt(0).toUpperCase();
-      return f + str.substr(1);
-    }
-
-
-
-    function redirect() {
-      $location.path('/account');
-    }
-
-    function showError(err) {
-      $scope.err = err;
-    }
-
-
-  });
+  }]);
