@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/codesses/codesses.png?label=ready&title=Ready)](https://waffle.io/codesses/codesses)
 # codesses
 
 Project repo for The Codesses website.
